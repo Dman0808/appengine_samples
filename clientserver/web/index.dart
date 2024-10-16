@@ -41,17 +41,7 @@ void addItem(Item item) {
 onCreate(MouseEvent event) async {
   final item = new Item()..name = nameInput.value;
   final error = item.validate();
-  if (error != null) {
-    window.alert(error);
-  } else {
-    final result = await restPost('/items', item.serialize());
-    if (!result['success']) {
-      errorMessage.text = 'Server error: ${result['error']}';
-    } else {
-      errorMessage.text = '';
-      addItem(item);
-    }
-  }
+  window.alert(error);
 }
 
 Future restGet(String path) async {
